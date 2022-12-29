@@ -1,0 +1,327 @@
+\section{Measurable Function}
+\begin{definition}[Measurable Function]
+    Let $\left( X,\mathcal{A} \right) $ and $\left( Y,\mathcal{S} \right) $ be two measurable spaces and a function $f:X \to Y$ is said to be $\mathcal{A}$-measurable function(or just measurable function) provided that  $f^{-1}(V)$ is a measurable set in $X$ for every measurable set $V$  in $Y$.\\
+    i.e.
+    \[
+        f^{-1}(V)\in\mathcal{A} \ \ \  \ \text{for every}\ V\in\mathcal{S}
+    \]
+\end{definition}
+\textbf{In particular:} Suppose $(X,\mathcal{A})$ is a measurable space. A function  $f:X\to\mathds{R}$ is called $\mathcal{A}$-measurable if  $f^{-1}(B)\in\mathcal{A}$ for every Borel set $B\subset \mathds{R}$.
+
+\begin{example}
+    \
+    \begin{itemize}
+        \item If $\mathcal{A}$ is a set of all subset of $X$, then every function from  $X\to\mathds{R}$ is a $\mathcal{A}$-measurable.
+        \item If $\mathcal{A}=\{\emptyset , (-\infty,0), [0,\infty),\mathds{R}\}$ (which is a $\sigma$-algebra of  $\mathds{R}$), then constant function \\
+            $f:\mathds{R}\to\mathds{R}$ is an $\mathcal{A}$-measurable function.
+    \end{itemize}
+\end{example}
+
+\begin{definition}[characteristic function]
+    Suppose $E$ is a subset of  $X$. The characteristic function of $E$ is a function  $\chi_{E}:X\to\mathds{R}$ define by 
+    \begin{equation*}
+        \chi_{E}(X)=
+        \begin{cases}
+            1 \ \ \text{if}\ x\in E \\
+            0 \ \ \text{if}\ x\notin E
+        \end{cases}
+    \end{equation*}
+\end{definition}
+\textbf{Observation:} Suppose $(X,\mathcal{A})$ is a measurable space,  $E\subset X$, and $B\subset\mathds{R}$. Then,
+\[
+    \chi_E^{-1}(B)=
+    \begin{cases}
+        E \ \ &\text{if}\ 0\notin B\ \text{and}\ 1\in B.\\ 
+        X\setminus E \ \ &\text{if}\ 0\in B\ \text{and}\ 1\notin B.\\ 
+        X \ \ &\text{if}\ 0\in B\ \text{and}\ 1\in B.\\ 
+        \emptyset \ \ &\text{if}\ 0\notin B\ \text{and}\ 1\notin B.
+    \end{cases}
+\]
+thus we see that $\chi_E$ is an  $\mathcal{A}$-measurable function iff  $E\in\mathcal{A}$.
+
+\begin{definition}[Simple Function]
+    Let $\psi$ be real-valued function defined on  $X$. If the range of  $\psi$ is finite, we say that  $\psi$ is a simple function.
+\end{definition}
+Suppose the range of $\psi$ consists of the distinct number  $c_1,\ldots,c_n$. Let,
+\[
+    E_i=\{x:\psi(x)=c_i\}\ \ \ (i=1,\ldots,n)
+\]
+Then,
+\[
+    \psi(x)=\sum_{k=1}^{n}c_k\chi_{E_{i}}.
+\]
+i.e. every simple function is a finite linear combination of characteristic functions. Hence it is clear that $\psi$ is measurable iff the sets  $E_1,\ldots E_n$
+are measurable.
+
+It is of interest that every function can be approximated by simple function.
+\begin{theorem}[Approximation by simple function]
+    $f:(X,\mathcal{A})\to\mathds{R}^{+}$ is a non-negative measurable function. Then there exists a sequence of simple function $\{\psi_n\}$ such that.
+     \begin{enumerate}
+         \item $\psi$ is monotone increasing.
+         \item  $\lim\psi_n=f$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Let $k$ be any integer. We write,
+     \[
+         E_{p,k}=\left\{ x:\frac{p-1}{2^{k}}\le f(x)\le \frac{p}{2^{k}} \right\} \ \text{where}\ p=1,2,\ldots,2^{2k}.
+    \]
+    and 
+    \[
+        E_{0,k}=X\setminus \bigcup_{p=1}^{2^{2k}}E_{p,k}=\left\{ x:f(x)\ge 2^{k} \right\}.
+    \]
+    Then,
+    \[
+        E_{p,k}=\left\{ x:f(x)<\frac{p}{2^{k}} \right\}\cap\left\{ x:f(x)\ge \frac{p-1}{2^{k}} \right\}.
+    \]
+    is measurable, Since $f$ is measurable.
+    Also, $E_{p,k},\ p=0,1,2,\ldots,2^{2k}$ are mutually disjoint.\\
+    we construct,
+    \[
+        \psi_k(x)=
+        \begin{cases}
+            \frac{p-1}{2^{k}}\ \ &\text{for} \ x\in E_{p,k}\\
+            2^{k} &\text{for} \ x\in E_{0,p}.
+        \end{cases}
+    \]
+    the $\psi_k$ is a step function.\\
+    By construction $0\le \psi_k\le f$.\\
+    If $x\in E_{p,k},\ p\neq 0$ then we have the following cases.
+    
+    \textit{Case:1}\\
+    $x\in E_{2p-1,k+1}$ in that cases  $\psi_k(x)=\psi_{k+1}$
+    
+    \textit{Case:2}\\
+    $x\in E_{2p,k+1}$ is that case $\psi_k(x)+\frac{1}{2^{k+1}}=\psi_{k+1}(x)$.\\
+    Thus for $x\in E_{p,k}$.  Then $\psi_n(x)\le \psi_{n+1}(x)$.\\
+    Also, if $x\in E_{0,p}$. Then $\psi_k(x)=2^{k}\le 2^{k+1}=\psi_{k+1}(x)$.
+    Combining we get,
+    \[
+        \psi_k(x)\le \psi_{k+1}(x) \ \ \forall\ x\in X
+    \]
+    i.e. $\psi_k$ is monotone increasing.\\
+    Next we show  $\psi_k\to f$.
+    
+    \textit{Case:1} $f$ is finite.\\
+    then $f(x)<2^{k}$ for some $k\in\mathds{Z}^{+}$, in that case,
+    \[
+        0\le f(x)-\psi_k(x)<2^{k}-\frac{2^{2k}-1}{2^{k}}=\frac{1}{2^{k}}.
+    \]
+    which show that $\psi_k(x)\to f(x)$ as  $k\to\infty$.
+
+    \textit{Case:2} $f=+\infty$\\
+    then $\psi_k(x)=2^{k}$ and $\psi_k\to f=\infty$ as $k\to\infty$.
+
+    Combination both we get, 
+    \[
+        \psi_n\to f \ \text{as}\ n\to\infty.
+    \]
+\end{proof}
+
+\begin{theorem}
+    Suppose $(X,\mathcal{S})$ is a measurable space and $f:X\to\mathds{R}$ is a measurable function iff 
+    \[
+        f^{-1}((a,\infty))=\{x\in X: f(x)>a\}\in\mathcal{S}\ \ \forall \ a\in\mathds{R}
+    \]
+\end{theorem}
+\begin{proof}
+    Let $f$ is a measurable function.\\
+    Since $\forall \ a \in\mathds{R}$, $(a,\infty)$ is a Borel set of  $\mathds{R}$. $f^{-1}((a,\infty))\in \mathcal{S}$
+    
+    Conversely, let $f^{-1}((a,\infty))\in \mathcal{S}$\\
+    We have to prove that $f$ is a measurable.\\
+    let,  $\tau=\{A\subset\mathds{R}:f^{-1}(A)\in\mathcal{S}\}$\\
+    We have to show every Borel subset of $\mathds{R}$ is in $\tau$. To do this first we prove $\tau$ is a  \sig-algebra on $\mathds{R}$ .
+
+    Clearly, $\emptyset\in\tau$, because  $f^{-1}(\emptyset)=\emptyset\in \mathcal{S}$.\\
+    If $A\in\tau$, then  $f^{-1}(A)\in\mathcal{S}$ ; hence,
+    \[
+        f^{-1}(\mathds{R}\setminus A)=X\setminus f^{-1}(A)\in \mathcal{S}.
+    \]
+    Thus, $\mathds{R}\setminus A\in \tau$. In other word $\tau$ is closed  under complementation.
+
+    If $A_1,A_2,\ldots\in \tau$\\
+    then, $f^{-1}(A_1),f^{-1}(A_2),\ldots\in\mathcal{S}$.\\
+    hence, 
+    \[
+        f^{-1}(\bigcup_{k=1}^{\infty}A_k)=\bigcup_{k=1}^{\infty}f^{-1}(A_k)\in \mathcal{S}.
+    \]
+    Thus, $\bigcup_{k=1}^{\infty}A_k\in\tau$. In other word $\tau$ is closed under countable unions. Thus  $\tau$ is \sig-algebra on  $\mathds{R}$.
+    
+    By hypothesis, $\tau$ contains  $\{(a,\infty):a\in\mathds{R}\}$. Since $\tau$ is closed under complementation,  $\tau$ contains  $\{(-\infty,b]:b\in\mathds{R}\}$.
+    $\tau$ also contain  $\{(a,b]:a,b\in\mathds{R}\}$, as $\tau$ is closed under countable intersection. Now  $(a,b)=\bigcup_{k=1}^{\infty}(a,b-\frac{1}{k}]$.
+    and $(-\infty,b)=\bigcup_{k=1}^{\infty}(-k,b-\frac{1}{k}]$. Hence, $\tau$ contain every open set of  $\mathds{R}$.
+
+    Thus the \sig-algebra $\tau$ contains the smallest  \sig-algebra on  $\mathds{R}$ that contains all open subset of $\mathds{R}$. Hence $\tau$ contains every borel set of  $\mathds{R}$. Thus $f$ is a measurable function.
+\end{proof}
+
+\begin{theorem}[]
+    If $(X,\mathcal{A})$ is a measurable space and a function  $f:X\to\mathds{R}$ is measurable if any of the following holds for each $a\in\mathds{R}$,
+    \begin{enumerate}
+        \item $\{x:f(x)\ge a\}=f^{-1}[a,\infty)\in \mathcal{A}$.
+        \item $\{x:f(x)\le a\}=f^{-1}(-\infty,a]\in \mathcal{A}$.
+        \item $\{x:f(x)< a\}=f^{-1}(-\infty,a)\in \mathcal{A}$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \
+    \begin{enumerate} 
+        \item Let $f$ is a measurable function from  $X\to\mathds{R}$.\\
+            Then, $f^{-1}((a,\infty))\in\mathcal{A}$\\
+            i.e. $ \{x:f(x)>a\}\in\mathcal{A}\ \ \forall a \in\mathds{R}$.
+            now,
+            \[
+                \left\{ x:f(x)>a+\frac{1}{k} \right\}\in\mathcal{A} 
+            \]
+            Then,
+            \[
+                \bigcap_{k=1}^{\infty}\left\{ x:f(x)>a+\frac{1}{k} \right\}=\left\{ x:f(x)\ge a \right\}\in\mathcal{A}  
+            \]
+            As, $\mathcal{A}$ is a \sig-algebra.
+
+            Conversely, Let $f$ satisfy (1). Then, $\{x:f(x)\ge a\}\in\mathcal{A} \ \ \forall a\in\mathds{R}$.\\
+            now, 
+            \[
+                \left\{ x:f(x)\ge a-\frac{1}{k} \right\}\in\mathcal{A}. 
+            \]
+            then,
+            \[
+                \bigcup_{k=1}^{\infty}\left\{ a:f(x)\ge a-\frac{1}{k} \right\}=\left\{ a:f(x)>a \right\}\in\mathcal{A}.  
+            \]
+            as, $\mathcal{A}$ is \sig-algebra.
+            Hence, $f$ is a measurable function.
+        \item $\{x:f(x)\le a\}=X\setminus\{a:f(x)>a\}\in\mathcal{A}$ as, $\mathcal{A}$ is a \sig-algebra.
+        \item $\{x:f(x)<a\}=X\setminus\{x:f(x)\ge a\}\in\mathcal{A}$
+    \end{enumerate}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Borel measurable function}
+\begin{definition}[Borel measurable function]
+    A function $f:X(\subset\mathds{R})\to\mathds{R}$ is called Borel measurable if $f^{-1}(B)$ is a Borel set for every Borel set $B\subset\mathds{R}$
+\end{definition}
+
+\begin{theorem}[Continuous function is Borel measurable]
+    Every continuous real-valued function defined on a Borel subset of $\mathds{R}$ is a Borel measurable function.
+\end{theorem}
+\begin{proof}
+    Let $X\subset\mathds{R}$ is a Borel set and $f:X\to\mathds{R}$ is a continuous function.\\
+    To prove that $f$ is a Borel measurable function.\\
+    Since,  $f$ is continuous in  $X$,  $f^{-1}(A)$ is a open set whenever $A\cap X$ is open set. 
+    Hence, if $A$ is Borel set then  $f^{-1}(A)$ is also Borel set.
+    Hence, $f$ is Borel measurable function.
+\end{proof}
+\begin{theorem}[Increasing function is Borel measurable]
+    Every increasing function define on a Borel subset of $\mathds{R}$ is a Borel measurable function.
+\end{theorem}
+\begin{proof}
+    Suppose $X\subset\mathds{R}$ and $f:X\to\mathds{R}$ is a increasing function. To prove $f$ is a Borel measurable function.\\
+    we fix $a\in\mathds{R}$. Let $b=\inf f^{-1}((a,\infty))$, Then it is easy to see that,
+    \[
+        f^{-1}((a,\infty))=(b,\infty)\cap X\ \text{or}\ \ f^{-1}((a,\infty))=[b,\infty)\cap X
+    \]
+    Either way, we can conclude that $f^{-1}((a,\infty))$ is a Borel set.\\
+    Hence $f$ is a Borel measurable set.
+\end{proof}
+\begin{theorem}[composition of measurable functions]
+    Suppose $(X,\mathcal{A}),\ (Y,\mathcal{S}),\ (Z,\mathcal{B})$ are measurable spaces.
+    And $f:X\to Y$ and  $g:Y\to Z$ are  $\mathcal{A}$-measurable and $\mathcal{S}$-measurable function respectively.
+    Then $g\circ f:X\to Z$ is a $\mathcal{A}$-measurable function.
+\end{theorem}
+\begin{proof}
+    Suppose $B\in \mathcal{B}$. Then ,
+    \[
+        (g\circ f)^{-1}(B)=f^{-1}(g^{-1}(B)).
+    \]
+    Since $g$ is a measurable function,  $g^{-1}(B)\in \mathcal{S}$. Then $f^{-1}(g^{-1}(B))\in\mathcal{A}$, as $f$ is a  $\mathcal{A}$-measurable function.\\
+    Thus $(g\circ f)^{-1}(B)\in \mathcal{A}$, implies that $g\circ f$ is an  $\mathcal{A}$-measurable set.
+\end{proof}
+
+\begin{corollary}
+    \label{-f}
+    If $f$ is measurable then  $-f,kf,|f|,f^{2}$ is measurable where $k\in\mathds{R}$ is a constant.
+\end{corollary}
+\begin{proof}
+    If we choose $g(x)=-x$ then $g(x)=kx$ then $g(x)=|x|$ and then $g(x)=x^{2}$. Clearly all the $g(x)$'s are continuous hence measurable.\\
+    Then  $g\circ f$ is measurable. Hence the result.
+\end{proof}
+
+\begin{theorem}[]
+    \label{f+g}
+    Suppose $(X,\mathcal{A})$ is a measurable space and $f,g:X\to\mathds{R}$ are $\mathcal{A}$-measurable. Then,
+    \begin{enumerate}
+        \item $f+g,f-g$ and $fg$ is  $\mathcal{A}$-measurable function.
+        \item If $g(x)\neq 0$ for all  $x\in X$, Then  $\frac{f}{g}$ is an measuravle functon.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    We first proof $f+g$ is a measurable.\\
+    Let  $r$ is a rational numbers. Then for $c\in\mathds{R}$
+    \begin{equation}
+        \{x:f(x)+g(x)>c\}=\bigcup_{r\in\mathds{Q}}\{x:f(x)>r\}\cap\{x:g(x)>c-r\}.
+    \end{equation}
+    ( \textit{Because:} If $f(x)+g(x)>c$. Hence  $(c-g(x),f(x))$ is non empty and thus it contain some ration number  $r$.\\
+    This implies that $r<f(x)$ and  $c-g(x)<r$.\\
+    i.e.  $f(x)>r$ and  $g(x)>c-r$.\\
+    i.e.  $x \in \{x:f(x)>r\}\cap\{x:g(x)>c-r\}$ for some  $r\in\mathds{Q}$.)
+
+    Now both $f,g$ are measurable function. Then $\{x:f(x)>r\}$ and $\{x:g(x)>c-r\}$ are measurable.\\
+    Then $\{x:f(x)>r\}\cap\{x:g(x)>c-r\}$ is also measurable.\\
+    Thus $\{x:f(x)+g(x)>c\}=\bigcup_{r\in\mathds{Q}}\{x:f(x)>r\}\cap\{x:g(x)>c-r\}$ is measurable.\\
+    Hence $f+g$ is also measurable.
+
+    Now if $g$ is measurable then by \refeq{-f} $-g$ is also measurable. Thuse  $f+(-g)=f-g$ is also measurable function.
+
+    Now 
+    \[
+        fg=\frac{(f+g)^{2}-f^2-g^2}{2}.
+    \]
+    Then by \refeq{-f} fg is also measurable.
+
+    If $g(x)\neq 0\ \forall x\in \mathds{R}$. Then the function $h(x)=\frac{1}{x}$ define on  $\mathds{R}\setminus\{0\}\to\mathds{R}$ is continuous.
+    Hence $\frac{1}{g}$ is a measurable function. Then  $f\times\frac{1}{g}=\frac{f}{g}$ is a measurable function.
+\end{proof}
+
+\begin{corollary}
+    If $f$ and  $g$ is measurable function. Then  $\max(f,g)$ and  $\min(f,g)$ and measurable functions.\\
+    In particular,  $f^{+}=\max(f,0)$ and $f^{-}=-\min(f,0)$ is also measurable function.
+\end{corollary}
+\begin{proof}
+    we know,
+    \begin{equation}
+        \max(f,g)=\frac{(f+g)+|f-g|}{2} \ \ \ \min(f,g)=\frac{(f+g)-|f-g|}{2}.
+    \end{equation}
+    then by \refeq{f+g} this result holds.
+\end{proof}
+
+\begin{theorem}[limits of measurable function]
+    Let $\{f_n\}$ be a sequence of measurable function (with the same domain of definition).\\
+    Then  $\sup\{f_1,\ldots,f_n\}$, $\inf\{f_1,\ldots,f_n\}$, $\sup_nf_n$,  $\inf_nf_n$,
+     $\lim\sup f_n$ and  $\lim\inf f_n$ are measurable function.
+\end{theorem}
+\begin{proof}
+    let, $h(x)=\sup\{f_1,\ldots,f_n\}$, then,
+    \[
+        \{x:h(x)<a\}=\bigcap_{i=1}^{n}\{x:f_i(x)<a\}.
+    \]
+    Since each $f_i$'s are measurable,  $h(x)$ is also measurable.
+    
+    Let, $g(x)=\inf\{f_1,\ldots,f_n\}$, then
+    \[
+        \{x:g(x)>a\}=\bigcap_{i=1}^{n}\{x:f_i(x)>a\}.
+    \]
+    Since each $f_i$'s are measurable,  $g(x)$ is also measurable.
+
+    Now, 
+    $$\sup_n f_n=\lim_{n\to\infty}\{x:h(x)<a\}=\bigcap_{i=1}^{\infty}\{x:f_i(x)<a\}$$
+    $$\inf_n f_n=\lim_{n\to\infty}\{x:g(x)>a\}=\bigcap_{i=1}^{\infty}\{x:f_i(x)>a\}$$
+    By measurability of $f_i$'s  $\sup_nf_n$ and  $\inf_nf_n$ is measurable.
+
+    Now, 
+    \[
+        \lim\sup f_n=\inf_n\big(\sup_{k\ge n}f_k\big) \ \ \text{and} \ \lim\inf f_n=\sup_n\big(\inf_{k\ge n}f_k\big)
+    \]
+    Then $\lim\sup f_n$ and  $\lim\inf f_n$ is also measurable.
+\end{proof}

@@ -1,0 +1,279 @@
+\section{Lebesgue Measure}
+
+While outer measure has the advantage that it is defined for all sets but we see in \refeq{no length for all set} that it is not additive.
+However outer Measure become measure if we suitably reduce the family of sets on which it is defined.
+\begin{definition}[Lebesgue Measurable set]
+    A set $E$ is said to be  \textit{Lebesgue measurable set} or simply  \textit{measurable set} if for each set $A$ we have 
+    \[
+        \smu(A)=\smu(A\setminus E^{c})+\smu(A\setminus E)
+    \]
+\end{definition}
+
+\textbf{Note:} Outer measure is countable subadditive so it always holds $\smu(A)\le \smu(A\setminus E^{c})+\smu(A\setminus E)$ so to proving $E$ is measurable showing 
+$\smu(A)\ge \smu(A\setminus E^{c})+\smu(A\setminus E)$ is enough. 
+
+\textbf{Note:} From definition we see that if $E$ is measurable then  $E^{c}$ is also measurable. Clearly $\emptyset$ is a Lebesgue measurable set then $\mathds{R}$ is also measurable.
+
+\begin{theorem}
+    \label{measure0}
+    If $\smu(E)=0$, then  $E$ is Lebesgue measurable set.
+\end{theorem}
+\begin{proof}
+    Let $A$ is any set. Then  $A\cap E\subset E$, So,
+    \[
+        \smu(A\cap E)\le \smu(E)=0
+    \]
+    But $\smu(A\cap E)\ge 0$ so, $\smu(A\cap E)=0$.\\
+    Also $A\subset A\cap E^{c}$, then,
+    \[
+        \smu(A)\ge \smu(A\cap E^{c})=\smu(A\cap E^{c})+\smu(A\cap E)
+    \]
+    Hence $E$ is Lebesgue measurable set.
+\end{proof}
+
+\begin{theorem}[]
+    \label{union is measurable}
+    If $E_1$ and $E_2$ are Lebesgue measurable set. Then  $E_1\cup E_2$ is Lebesgue measurable.
+\end{theorem}
+\begin{proof}
+    Let $A$ be any set. Since  $E_1$ is measurable,
+    \[
+        \smu(A)=\smu(A\cap E_1)+\smu(A\cap E_1^{c}).
+    \]
+    Again $E_2$ is measurable then,
+    \[
+        \smu(A\cap E_1^{c})=\smu((A\cap E_1^{c})\cap E_2)+\smu((A\cap E_1^{c})\cap E_2^{c})
+    \]
+    Now, $(A\cap E_1^{c})\cap E_2^{c}=A\cap(E_1^{c}\cap E_2^{c})=A\cap(E_1\cup E_2)^{c}$.
+    \\Now,
+    \[
+        \smu(A)=\smu(A\cap E_1)+\smu(A\cap E_1^{c}\cap E_2)+\smu(A\cap (E_1\cup E_2)^{c})
+    \]
+    We see, $A\cap(E_1\cup E_2)=(A\cap E_1)\cup(A\cap E_2\cap E_1^{c})$ 
+    \\So by property of outer measure, $\smu(A\cap(E_1\cup E_2))\le \smu(A\cap E_1)+\smu(A\cap E_2\cap E_1^{c})$\\
+    Then,
+    \[
+        \smu(A)\ge \smu(A\cap(E_1\cup E_2))+\smu(A\cap (E_1\cup E_2)^{c})
+    \]
+    Hence, $E_1\cup E_2$ is also Lebesgue measurable.
+\end{proof}
+
+\begin{theorem}[]
+    \label{sigma-algebra}
+    The collection $\mathcal{L}$ of Lebesgue Measurable sets is a \sig-algebra.
+\end{theorem}
+\begin{proof}
+    Let $A$ be any set. \\
+    Now,  $A\cap\emptyset=\emptyset$ and $A\cap\emptyset^{c}=A$ So,
+    \[
+        \smu(A)=\smu(A\cap\emptyset)+\smu(A\cap\emptyset^{c}).
+    \]
+    Hence, $\emptyset\in\mathcal{L}$ and $X\in\mathcal{L}$ (say, $\emptyset^c=X$).\\
+    Now from definition we say if $E\in \mathcal{L}$ then  $E^{c}\in\mathcal{L}$.\\
+    Hence, $\mathcal{L}$ is closed under complementation.\\
+    Now from \refeq{union is measurable} we say if  $E_1,E_2\in\mathcal{L}$ then  $E_1\cup E_2\in\mathcal{L}$. \\
+    Now from previous $E_1^{c},E_2^{c}\in\mathcal{L}$. Then $(E^{c}\cup E^{c})\in\mathcal{L}$.\\
+    Then, $(E_1\cap E_2)^{c}\in\mathcal{L}\implies(E_1\cap E_2)\in\mathcal{L}$.\\
+    Now using induction on \refeq{union is measurable} we get, $F_n=\cup_{i=1}^{n}E_k\in\mathcal{L}$ where each $E_i\in\mathcal{L}$.\\
+    ( 
+    if $\{E_n\}$ is sequence of sets in $\mathcal{L}$. Then we can construct another sequence of disjoint sets ${E'_n}$ in  $\mathcal{L}$.
+    Where $E'_1=E_1,\ E'_n=E_n\setminus \cup_{i=1}^{n-1}E_k$\\
+    and $\cup_{i=1}^{n}E_k=\cup_{i=1}^{n}E'_i$
+    )\\
+    Without lose of generality we choose $\{E_n\}$ is sequence of disjoint set.\\
+    Now $F_n$ is measurable Then,
+    \begin{equation}
+        \label{Fn measurable}
+        \smu(A)=\smu(A\cap F_n)+\smu(A\cap F_n^{c}).
+    \end{equation}
+    Let, for all $A$ and for some $n\in\mathds{Z}^{+}$ 
+    \[
+        \smu(A\cap F_n)=\sum_{i=1}^{n}\smu(A\cap E_k).
+    \]
+    Then, 
+    \begin{align*}
+        \smu(A\cap F_{n+1})&=\smu((A\cap F_{n+1})\cap F_n)+\smu((A\cap F_{n+1})\cap F_n^{c})\ (\because F_n\ \text{is measurable.})\\
+                           &=\smu(A\cap F_n)+\smu(A\cap E_{n+1})\ (\because F_{n+1}\cap F_n^{c}=E_{n+1}).\\
+                           &=\sum_{i=1}^{n}\smu(A\cap E_k)+\smu(A\cap E_{n+1})\\
+                           &=\sum_{i=1}^{n+1}\smu(A\cap E_k).
+    \end{align*}
+    Hence the proposition is true for $n+1$. And it is true for  $n=1$.\\
+    Hence for all $n$
+    \begin{equation}
+        \label{FnEn}
+        \smu(A\cap F_n)=\sum_{i=1}^{n}\smu(A\cap E_k).
+    \end{equation}
+    Let, $E=\cup_{i=1}^{n}E_k$. Then clearly $F_n\subset E$ for all $n$.\\
+    Then, 
+    \begin{align*}
+        \smu(A\cap E)&\ge \smu(A\cap F_n) \ \text{ By monotone property}\\
+                     &=\sum_{i=1}^{n}\smu(A\cap E_k).
+    \end{align*}
+    making  $n\to\infty$, We have,
+    \begin{align*}
+        \smu(A\cap E)\ge \sum_{i=1}^{\infty}\smu(A\cap E_k).
+    \end{align*}
+    by countable subadditivity, the converse inequality holds. Then,
+    \begin{equation}
+        \label{infty}
+        \smu(A\cap E)=\sum_{i=1}^{\infty}\smu(A\cap E_k)
+    \end{equation}
+    From \refeq{Fn measurable} and \refeq{FnEn} we have.
+    \begin{equation}
+        \smu(A)=\sum_{i=1}^{n}\smu(A\cap E_k)+\smu(A\cap F_n^{c})
+    \end{equation}
+    now clearly $(A\cap F_n^{c})\supset (A\cap E^{c})\implies\smu(A\cap F_n^{c})\ge \smu(A\cap E^{c})$
+    Then,
+    \begin{equation}
+        \label{EnE}
+        \smu(A)\ge \sum_{i=1}^{n}\smu(A\cap E_k)+\smu(A\cap E^{c})
+    \end{equation}
+    Making $n\to\infty$ in \refeq{EnE} We get,
+    \begin{align*}
+        \smu(A)&\ge \sum_{i=1}^{\infty}\smu(A\cap E_k)+\smu(A\cap E^{c})\\
+               &\ge \smu(A\cap E)+\smu(A\cap E^{c}) \ (\text{By \refeq{infty}})
+    \end{align*}
+    Hence $E=\cup_{i=1}^{\infty}E_k$ is measurable. In other word $\mathcal{L}$ is closed under countable union.\\
+    Hence $\mathcal{L}$ is a \sig-algebra.
+\end{proof}
+Hence outer measure become measure (i.e. additive) when it is restricted on \sig-algebra.
+\begin{definition}[Lebesgue Measure]
+    Let $\smu$ is outer measure on  $\mathds{R}$ (set of all real number) and $\mathcal{L}$ is a collection of Lebesgue measurable set.
+    Then $\smu$ is \textit{Lebesgue Measure} on the measure space $(\mathds{R},\mathcal{L},\smu)$.
+\end{definition}
+
+Since Lebesgue Measure is a measure so it follows all the property of measure.
+
+\begin{theorem}
+    \label{open mesure}
+    The interval $(a,\infty)$ is Lebesgue measurable.
+\end{theorem}
+\begin{proof}
+    To prove $(a,\infty)$ is measurable we show, for any set $A$,
+    \begin{align*}
+        \smu(A)&=\smu(A\cap(a,\infty))+\smu(A\cap(a,\infty)^{c})\\
+        i.e.\ \smu(A)&\ge \smu(A\cap(a,\infty))+\smu(A\cap(-\infty,a]).
+    \end{align*}
+    Let, $A_1=A\cap(a,\infty)$ and $A_2=A\cap(-\infty,a]$.\\
+    If $\smu(A)=\infty$ then we are done.\\
+    If $\smu(A)<\infty$, then given $\epsilon>0$ there exist countable collection  $\{I_n\}$ of open intervals which cover  $A$ and for which,
+    \[
+        \sum_{k=1}^{\infty}\ell(I_k)\le \smu(A)+\epsilon.
+    \]
+    (Because, $\smu(A)=\inf\left\{ \sum_{k=1}^{\infty}I_k \right\}$ where, $A\subset\cup_{k=1}^{\infty}I_n$ )\\
+    Let, $I'_n=I_n\cap(a,\infty)$ and $I''_n=I_n\cap(-\infty,a)$.\\
+    Then $I'_n$ and  $I''_n$ are interval(can be empty) and,
+    \begin{align*}
+        \ell(I_n)&=\ell(I'_n)+\ell(I''_n)\\
+                 &=\smu(I'_n)+\smu(I''_n).
+    \end{align*}
+    Since, $A_1\subset\bigcup_{i=1}^{\infty}I'_k$ we have,
+    \[
+        \smu(A_1)\le \smu\left( \bigcup_{i=1}^{\infty}I'_k \right) \le \sum_{i=1}^{\infty}\smu(I'_i).
+    \]
+    Since, $A_2\subset\bigcup_{i=1}^{\infty}I''_k$ we have,
+    \[
+        \smu(A_2)\le \smu\left( \bigcup_{i=1}^{\infty}I''_k \right) \le \sum_{i=1}^{\infty}\smu(I''_i).
+    \]
+    Then,
+    \begin{align*}
+        \smu(A_1)+\smu(A_2)&\le \sum_{i=1}^{\infty}\smu(I'_k)+\sum_{i=1}^{\infty}\smu(I''_i)\\
+                           &=\sum_{i=1}^{\infty}\left( \smu(I'_n)+\smu(I''_n) \right)\\
+                           &=\sum_{i=1}^{\infty}\ell(I_k)\\
+                           &\le \smu(A)+\epsilon.
+    \end{align*}
+    Since $\epsilon$ is a arbitrary positive real number so we have,
+    \[
+        \smu(A)\ge \smu(A_1)+\smu(A_2).
+    \]
+    Hence, $(a,\infty)$ is a measurable set.
+\end{proof}
+
+\begin{theorem}[Borel Set are measurable]
+    Every Borel set is Lebesgue measurable set.
+\end{theorem}
+\begin{proof}
+    Let $\mathcal{L}$ is a collection of Lebesgue measurable sets. Then by (\refeq{sigma-algebra}) $\mathcal{L}$ is a \sig-algebra and by (\refeq{open mesure})
+    $(a,\infty)\in\mathcal{L}$ for all $a\in\mathds{R}$\\
+    Then, $(a,\infty)^{c}=(-\infty,a]\in\mathcal{L}$.\\
+    Since,
+    \[
+        (-\infty,b)=\bigcup_{n=1}^{\infty}\left(-\infty,b-\frac{1}{n}\right]
+    \]
+    then, $(-\infty,b)\in\mathcal{L}$\\
+    Again, $(a,b)=(\infty,b)\cap(a,\infty)$. Then, $(a,b)\in\mathcal{L}$.\\
+    Now, every open set is union of countable number of open intervals. So, every open set must belong to  $\mathcal{L}$.\\
+    Therefor,  $\mathcal{L}$ is a \sig-algebra containing every open set.\\
+    Therefor, $\mathcal{L}$ contain the family  $\mathcal{B}$ of Borel Set. As $\mathcal{B}$ is the smallest \sig-algebra containing every open set.\\
+    Hence, Borel sets are Lebesgue measurable.
+\end{proof}
+
+\begin{theorem}[Alternative Definition of Lebesgue Measure]
+    For any set $E\subset\mathds{R}$ the followings are equivalent.
+    \begin{enumerate}
+        \item $E$ is measurable.
+        \item Given  $\epsilon>0$, there is an open set  $O\supset E$ with  $\smu(O\setminus E)<\epsilon$.
+        \item Given $\epsilon>0$, there is a closed set  $F\subset E$ with  $\smu(E\setminus F)<\epsilon$.
+        \item There exist close sets $F_1,F_2,\ldots$ contained in $E$ such that  $\smu(A\setminus \bigcup_{K=1}^{\infty}F_k)$.
+        \item The exist a Borel set $B\subset E$ such That  $\smu(E\setminus B)=0$.
+        \item Ther exist open sets $G_1,G_2,\ldots$ containing $E$ such that  $\smu(\bigcap_{k=1}^{\infty}G_k\setminus E)=0$
+        \item The exist a Borel set $B\supset E$ such that  $\smu(B\setminus E)=0$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \textbf{$(1)\implies(2)$}\\
+    if $\smu(E)=\infty$ then the result is trivial.
+    Let $\smu(E)<\infty$, Then given $\epsilon>0$ there exist countable collection  $\{I_n\}$ of open intervals such that,
+     \[
+        \sum\ell(I_n)< \smu(E)+\epsilon.
+    \]
+    Now we know every open set is union of countable open intervals, Then there exist a open set $O$ such that.
+    \begin{align*}
+        &\smu(O)=\sum\ell(I_n)\\
+        i.e.\ &\smu(O)< \smu(E)+\epsilon\\
+        i.e.\ &\smu(O)-\smu(E)<\epsilon\\
+        i.e.\ &\smu(O\setminus E)<\epsilon\ \ (\because O,E\ \text{both are measurable})
+    \end{align*}
+    \textbf{$(2)\implies(3)$}\\
+    Suppose $(2)$ holds.
+    Let $F\subset E$ where  $F$ is close set.\\
+    Then,  $E^{c}\subset F^{c}$ here $F^{c}$ is open set.\\
+    Then, 
+    \begin{align*}
+        \smu\left( F^{c}\setminus E^{c} \right)&<\epsilon\\
+        \smu\left( E\setminus F \right) &<\epsilon. \ (\because (F^{c}\setminus E^{c})=(E\setminus F)).
+    \end{align*}
+    \textbf{$(3)\implies(4)$}\\ 
+    Suppose $(3)$ holds. Thus for each $n\in\mathds{Z}^{+}$, there exist a close set $F_n\subset E$ such that  $\smu(E\setminus F_n)<\frac{1}{n}$. Now,
+    \[
+        E\setminus \bigcup_{k=1}^{\infty}F_k\subset E\setminus F_n.
+    \]
+    Thus, $\smu(E\setminus \bigcup_{k=1}^{\infty}F_k)\le \smu(E\setminus F_n)\le \frac{1}{n}$ for each $n\in\mathds{Z}^{+}$.\\
+    Hence, $\smu(E\setminus \bigcup_{k=1}^{\infty})=0$, completing the proof.\\
+    \textbf{$(4)\implies(5)$}\\
+    Because every countable union of closed sets is Borel set, Hence the result.\\
+    \textbf{$(2)\implies(6)$}\\ 
+    Suppose $(2)$ holds.\\ Thus for each  $n\in\mathds{Z}^{+}$, there exist an open set $G_n\supset E$ such that  $\smu(G_n\setminus E)<\frac{1}{n}$. Now,
+    \[
+        \left( \bigcap_{k=1}^{\infty}G_k \right)\setminus A\subset G_n\setminus A. 
+    \]
+    Thus $\smu\left(\left( \bigcap_{k=1}^{\infty}G_k \right)\setminus A\right)\le \smu\left( G_n\setminus A\right)\le \frac{1}{n}$ for each $n\in\mathds{Z}^{+}$.\\
+    Hence $\smu\left( G_n\setminus A\right)=0$, completing the proof.
+    \textbf{$(6)\implies(7)$}\\
+    Because every countable intersection of open set is a borel set. Hence the result is proved.
+    \textbf{$(5)\implies(1)$}\\
+    Suppose $(5)$ holds. Thus there exist a borel set  $B\subset E$ such that  $\smu(E\setminus B)=0$.
+    Then, $E\setminus B\in \mathcal{L}$ by \refeq{measure0}. Now, 
+    \[
+        E=B\cup(E\setminus B).
+    \]
+    Since $B\in\mathcal{L}$,  $(E\setminus B)\in\mathcal{L}$ and  $\mathcal{L}$ is \sig-algebra,  $E\in\mathcal{L}$.\\
+    Hence  $E$ is measurable.\\
+    \textbf{$(7)\implies(1)$}\\
+    Suppose $(7)$ Holds. Thus there exist a borel set  $B\supset E$ such that  $\smu(B\setminus E)=0$
+    Now, $B\setminus E$ measurable implies $R\setminus (B\setminus E)$ is also measurable and $B$ is measurable (AS Borel Sets are measurable)
+     \[
+        E=B\cap(\mathds{R}\setminus (B\setminus E)).
+    \]
+    Thus, $E$ is also measurable.
+\end{proof}

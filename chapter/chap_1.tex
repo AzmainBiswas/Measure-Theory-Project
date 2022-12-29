@@ -1,0 +1,156 @@
+\section{Outer Measure}
+\begin{definition}[length of open interval]
+    The length $\ell(I)$ of an open interval is define by
+    $$
+    \ell(I)=
+     \begin{cases}
+         b-a \ \ &\text{if}\ I=(a-b) \text{for some}\ a,b\in\mathds{R}\ \text{with}\ a<b,\\
+         0 \ \ &\text{if}\ I=\emptyset,\\
+         \infty\ \ &\tx{if}\ I=(-\infty,a) \ \tx{or}\ I=(a,\infty)\ \tx{for some}\ a\in\mathds{R}\\
+         \infty\ \ &\tx{if}\ I=(-\infty,\infty).
+    \end{cases}
+    $$
+\end{definition}
+
+\begin{definition}[Outer Measure]
+    The outer measure $\smu(A)$ of a set  $A\subset \mathds{R}$ is define by
+    \[
+        \smu(A)=\inf \left\{ \sum_{k=1}^{\infty}\ell(I_k) \right\} 
+    \]
+    where, $I_1,I_2,\ldots$ are open intervals such that $A\subset\cup_{k=1}^{\infty}I_k$.
+\end{definition}
+\begin{example}[finite sets have outer measure $0$]
+    Suppose $A=\{ a_1,a_2,\ldots,a_n \} $ is a finite set of real numbers. Suppose $\epsilon>0$. Define a sequence  $I_1,I_1,\ldots$ of open intervals
+    by
+    \[
+        I_k=
+        \begin{cases}
+            (a_k-\epsilon,a_k+\epsilon)\ \ \ &\tx{if}\ k\le n;\\
+            \emptyset \ &\tx{if}\ k>n.
+        \end{cases}
+    \]
+    Then $I_1,I_2,\ldots$ is a sequence of open intervals whose union contain $A$. \\
+    Clearly,  $\sum_{k=1}^{\infty}\ell(I_k)=2\epsilon n$.\\
+    Hence, $\smu(A)\le 2\epsilon n$.\\
+    Since $\epsilon$ is arbitrary small positive number,  $\smu(A)=0$.
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Properties of Outer Measure}
+Properties of outer measure are followings,
+\begin{enumerate}
+    \item Every countable subset of $\mathds{R}$ has outer measure $0$.
+    \item Suppose  $A$ and  $B$ are subset of  $\mathds{R}$ with $A\subset B$. Then  $\smu(A)\le \smu(B)$.
+    \item Suppose $t\in\mathds{R}$ and $A\subset \mathds{R}$. Then $\smu(t+A)=\smu(A)$.
+    \item Suppose  $A_k$'s are a sequence of subset of  $\mathds{R}$. Then,
+        \[
+            \smu\left( \bigcup_{k=1}^{\infty}A_k \right)\le \sum_{k=1}^{\infty}\smu(A_k). 
+        \]
+    \item Suppose $a,b\in\mathds{R}$, with $a<b$. Then  $\smu([a,b])=b-a$.
+\end{enumerate}
+\begin{theorem}[outer measure is note additive]
+    \label{nonadditivity OM}
+    There exist disjoint subsets $A$ and  $B$ of  $\mathds{R}$ such that,
+    \[
+        \smu(A\cup B)\neq \smu(A)+\smu(B).
+    \]
+\end{theorem}
+\begin{proof}
+    For $a\in[-1,1]$, let  $\tilde{a}$ be the set of numbers in  $[-1,1]$ such that.
+     \[
+         \tilde{a}=\{c\in[-1,1]:a-c\in\mathds{Q}\}.
+    \]
+    If $a,b\in[-1,1]$ and  $\tld{a}\cap\tld{b}\neq \emptyset$, Then $\tld{a}=\tld{b}$.\\
+    (\textit{Proof: } Suppose There exist $d\in\tld{a}\cap\tld{b}$. Then  $a-b$ and  $b-d$ are rational number; subtracting, we conclude that 
+    $a-d$ is rational number. The equitation $a-c=(a-b)+(b-c)$ now implies that if  $c\in[-1,1]$, then $a-c$ is rational iff $b-c$ is rational number.
+    In other word  $\tld{a}=\tld{b}$.)\\
+    Clearly, $a\in\tld{a}$ for each  $a\in[-1,1]$. Thus $[-1,1]=\cup_{a\in[-1,1]}\tld{a}$.\\
+    Let $V$ be a set that contains exactly one element in each of the distinct sets in  $\{\tld{a}:a\in[-1,1]\}$
+
+    In other words, for every  $a\in[-1,1]$, the set  $V\cap\tld{a}$ has exactly one element.
+
+    Let  $r_1,r_2,\ldots$ be a sequence of distinct rational numbers such that
+    \[
+        [-2,2]\cap\mathds{Q}={r_1,r_2,\ldots}
+    \]
+    Then
+    \[
+        [-1,1]\subset \bigcup_{k=1}^{\infty}(r_k+V),
+    \]
+    Where the set inclusion above holds because if $a\in[-1,1]$ then  $v$ is the unique element of  $V\cap\tld{a}$, we have $a-v\in\mathds{Q}$, which implies that $a=r_k+v\in r_k+V$ for some  $k\in\mathds{Z}^{+}$.
+
+    Then by order-preserving property of outer measure, and countable subadditivity of outer measure imply
+    \[
+        \smu([-1,1])\le \sum_{k=1}^{\infty}\smu(r_k+V).
+    \]
+    Now $\smu([-1,1])=2$ and by translation invariance property of outer measure we can say,
+     \[
+         2\le \sum_{k=1}^{\infty}\smu(V).
+    \]
+    Thus $\smu(V)>0$.
+
+    Note that the sets  $r_k+V$'s are disjoint.\\
+    (\textit{Proof:} Suppose there exists $t\in(r_j+V)\cap(r_k+V)$. Then $t=r_j+v_1=r_k+v_2$ for some  $v_1,v_2\in V$, which implies that  $v_1-v_2=r_k-r_j\in\mathds{Q}$ from the construction of $V$ now implies that  $v_1=v_2\implies r_j=r_k\implies j=k$. ) 
+    Let $n\in\mathds{Z}^{+}$. Clearly,
+    \[
+        \bigcup_{k=1}^{n}(r_k+V)\subset [-3,3]
+    \]
+    Because $V\subset [-1,1]$ and each  $r_k\in[-2,2]$. The set inclusion above implies that
+     \begin{equation}
+         \label{less6}
+         \smu\left(\bigcup_{k=1}^{n}(r_k+V)\right)\le 6 
+    \end{equation}
+    However,
+    \begin{equation}
+        \label{nV}
+        \sum_{k=1}^{n}\smu(r_k+V)=\sum_{k=1}^{n}\smu{V}=n\smu(V).
+    \end{equation}
+    Now (\refeq{less6}) and  (\refeq{nV}) suggest that we choose $n\in\mathds{Z}^{+}$ such that $n\smu(V)>6$. Thus,
+     \begin{equation}
+        \label{contra}
+         \smu\left( \bigcup_{k=1}^{n}(r_k+V) \right) <\sum_{k=1}^{n}\smu(r_k+V).
+    \end{equation}
+
+    If we had $\smu(A\cup B)=\smu(A)+\smu(B)$ for all disjoint subset  $A,B$ of  $\mathds{R}$, then by induction on $n$ we would have $\smu\left(\bigcup_{k=1}^nA_k\right)=\sum_{k=1}^n\smu(r_k+V)$. For all disjoint subset $A_1,A_2,\dots,A_n$ of $\mathds{R}$.
+
+    However, from (\refeq{contra}) we see no such result holds. Thus, there exist disjoint subsets on $A,B$ of $\mathds{R}$ such that $\smu(A\cup B)\neq\smu(A)+\sum(B)$. 
+\end{proof}
+
+Now we have seen in above theory that outer measure is not additive. So does there exist other notion than outer measure for size of subsets of $\mathds{R}$ that follow additive property?
+\begin{theorem}[nonexistence of extension of length to all subset of $\mathds{R}$]
+    \label{no length for all set}
+    There does note exist a function $\mu$ with all the following properties:
+    \begin{enumerate}
+        \item $\mu:P(\mathds{R})\to [0,\infty]$.
+        \item $\mu(I)=\ell(I)$ for every open interval $I\subset \mathds{R}$.
+        \item $\mu\left(\bigcup_{k=1}^{\infty}A_K\right)=\sum_{k=1}^{\infty}\mu(A_k)$ for every disjoint sequence $\{A_k\}$ of subsets of $\mathds{R}$.
+        \item $\mu(t+A)=\mu(A)$ for  every $A\subset \mathds{R}$ and for every $t\in \mathds{R}$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Suppose there exist a function $\mu$ that follow all the property listed above.
+
+    Observed that $\mu(\emptyset)=0$, as follows from (2) because the empty set is a open interval with length 0.
+
+    If $A\subset B\subset \mathds{R}$, then $\mu(A)\le \mu(B)$, as follows from (3) because we can write $B$ as the union of the disjoint sequence $A,B\setminus A,\emptyset,\emptyset,\ldots$;\\
+    Thus,
+    \[
+    \mu(B)=\mu(A)+\mu(B\setminus A)+0+0+\ldots=\mu(A)+\mu(B\setminus A)\ge \mu(A).
+    \]
+    If $a,b\in \mathds{R}$ with $a<b$, then $(a,b)\subset [a,b]\subset (a-\epsilon,b+\epsilon)$for every $\epsilon>0$. Thus $b-a\le \mu([a,b])\le b-a+2\epsilon$ for every $\epsilon>0$.
+    Hence $\mu([a,b])=b-a$.
+
+    If ${A_k}$ is sequence of subset of $\mathds{R}$, then $A_1,A_2\setminus A_1,A_3\setminus (A_1\cup A_2),\ldots$ is a disjoint sequence of $\mathds{R}$ whose union is $\cup_{k=1}^{\infty}A_k$. Thus,
+    \begin{align*}
+        \mu\left(\bigcup_{k=1}^{\infty}A_k\right)&=\mu(A_1\cup(A_2\setminus A_1)\cup(A_3\setminus (A_1\cup A_2))\cup\ldots)\\
+        &=\mu(A_1)+\mu(A_2\setminus A_1)+\mu(A_3\setminus (A_1\cup A_2))+\ldots\\
+        &\le\sum_{k=1}{\infty}(A_k),
+    \end{align*}
+
+    We have shown that $\mu$ has all the properties of outer measure  that were used in the proof of (\ref{nonadditivity OM}). Repeating the proof of \ref{nonadditivity OM}, we see that there exist disjoint subset $A,B$ of $\mathds{R}$ such that $\mu(A\cup B)\neq\mu(A)+\mu(B)$. Which is a contradiction of (3). This contradiction completes the proof.
+\end{proof}
+So the above result shows us we have to give up one of the described properties in our goal of extending the notion of size from intervals to more general sets. 
+We can not give up property (2) because the size of an interval needs to be its length. We cannot give up property (3) because additivity is needed. We can not give up (4) either because length have to be translation invariant.
+
+
+So we are force to relax the property (1) that size is defined for all subset of $\mathds{R}$ 

@@ -1,0 +1,56 @@
+\section{Vitali Set}
+We see in \refeq{no length for all set} That every subset of $\mathds{R}$ is not measurable. So, There exist such subset of $\mathds{R}$ which is not measurable.
+Vitali set is such nonmeasurable set.
+
+We define a relation on $(0,1]$ by  $x\sim y$ iff  $x-y\in\mathds{Q}$. Then,
+\begin{enumerate}
+    \item $x\sim x$ as  $x-x=0\in\mathds{Q}$.
+    \item if $x\sim y$ then $y\sim x$ as $x-y=y-x\in\mathds{Q}$.
+    \item if $x\sim y$ and  $y\sim z$.\\
+         Then, $x-y\in\mathds{Q}$ and $y-z\in\mathds{Q}$ \\
+         then, $(x-y)+(y-z)=x-z\in\mathds{Q}$ i.e. $x\sim z$.
+\end{enumerate}
+Hence the above relation is equivalence. Choosing a single point from each equivalence class we construct a set $V$. This construction is possible because of \textit{axiom
+of choice} even though it is very controversial topic in mathematics. Without \textit{axiom of choice} it impossible to construct a non measurable set. 
+\begin{definition}[Vitali Set]
+    A set $V\subset(0,1]$ is called Vitali set if  $V$ contain a single point of  $(x+\mathds{Q})\cap(0,1]$ for each $x+\mathds{Q}\in\mathds{R}/\mathds{Q}$.
+\end{definition}
+\begin{theorem}
+    Vitali set is not Lebesgue measurable.
+\end{theorem}
+\begin{proof}
+    Let $r_1,r_2,\ldots$ be the sequence of all rational number in $[0,1]$. To prove this theory we first proof.
+     \begin{enumerate}
+         \item if $i\neq j$ then $V+r_i\cap V+r_j=\emptyset$.
+         \item $(0,1]=\cup_{i=1}^{\infty}V+r_i$.
+    \end{enumerate}
+    Where $V+r_i$ is define by  $\{a+x:a\in V\}$ and define 
+     $$x+y=
+     \begin{cases}
+        x+y \ ,\ x+y\le 1 \\
+        x+y-1\ ,\ \text{Otherwise}
+    \end{cases}
+    $$
+
+    \textbf{Proof(1):} Suppose $x\in V+r_i\cap V+r_j$.\\
+    Then,  $x=v_i+r_i=v_j+r_j$ for some  $v_i,v_j\in V$ \\
+    This implies that $v_i-v_j\in \mathds{Q}$. So,$v_i$ and  $v_j$ belong to same class.\\
+    Since  $V$ contain exactly one element of each class. Hence $s_i=s_j$.\\
+    Since  $0<r_i,r_j\le 1$ we would also have $r_i=r_j\implies i=j$, completing the prove of (1).
+
+    \textbf{Proof(2):} If  $x\in(0,1]$ then,  $x\sim v$ for some  $v\in V$.\\
+    Since  $x$ must be in some equivalence class and representative of each class appears in  $V$.\\ Then $x$ differs from  $y$ by some rational number in  $(0,1]$
+    so  $x\in V+r_i$ for some  $i$.\\
+    Hence  $(0,1]=\bigcup_{i=1}^{\infty}V+r_i$ proving (2).
+
+    Then we get each $V+r_i$ are disjoint and  $(0,1]=\bigcup_{i=1}^{\infty}V+r_i$.\\
+    let $V$ is measurable and  $\smu(V)=a$. Then  $\smu(V+r_i)=a$ as measure is translation invariant.\\
+    Then we have, 
+    \begin{align*}
+        1=\smu((0,1])&=\smu\left( \bigcup_{i=1}^{\infty}V+r_i \right) \\
+                     &=\sum_{i=1}^{\infty}\smu(V+r_i)\\
+                     &= a+a+a+\ldots 
+    \end{align*}
+    Now write side is either $0$ or  $\infty$. A contradiction.\\
+    Then $V$ is non measurable set.
+\end{proof}

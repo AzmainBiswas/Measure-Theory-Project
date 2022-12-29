@@ -1,0 +1,66 @@
+\section{Cantor Set}
+Every countable set has outer measure $0$. So the natural question is the converse holds. In other word, is every set with outer measure  $0$ countable?
+
+To construct a cantor set we start with interval $[0,1]$ and removing the middle-third open interval at each step of remaining intervals from previous step.
+
+At first step we remove  $G_1=(\frac{1}{3},\frac{2}{3})$ then we have $[0,1]\setminus G_1=[0,\frac{1}{3}]\cup[\frac{2}{3},1]$.\\
+In the second step we remove $G_1\cup G_2=(\frac{1}{3},\frac{2}{3})\cup(\frac{1}{9},\frac{2}{9})\cup(\frac{7}{9},\frac{8}{9})$. Then we left with 
+\[
+    \left[ 0,1 \right]\setminus (G_1\cup G_2) = \left[0,\frac{1}{9}\right]\cup\left[ \frac{2}{9},\frac{1}{3} \right] \cup \left[ \frac{2}{3},\frac{7}{9} \right] \cup\left[ \frac{8}{9},1\right] 
+\]
+repeating this presses we construct cantor set.
+
+\begin{definition}[Cantor Set]
+    The cantor set $C$ is  $[0,1]\setminus (\bigcup_{k=1}^{\infty}G_k)$, where $G_1=(\frac{1}{3}.\frac{2}{3})$ and $G_n$ for  $n>1$ is the union of the middle-third
+    open intervals in the interval of  $[0,1]\setminus (\bigcup_{k=1}^{n-1}G_k$).
+\end{definition}
+\begin{figure}[!h]
+    \centering
+    \begin{tikzpicture}[decoration=Cantor set,line width=1.5mm]
+        \draw (0,0) -- (6,0);
+        \draw decorate{ (0,-1) -- (6,-1) };
+        \draw decorate{ decorate{ (0,-2) -- (6,-2) }};
+        \draw decorate{ decorate{ decorate{ (0,-3) -- (6,-3) }}};
+        \draw decorate{ decorate{ decorate{ decorate{ (0,-4) -- (6,-4) }}}};
+    \end{tikzpicture}
+    \caption{Cantor Set}
+\end{figure}
+
+\begin{theorem}
+    The Cantor set is nonempty.
+\end{theorem}
+\begin{proof}
+    Each trisection $G_n$ to form  $G_{n=1}$ leaves exactly two endpoints. Foe example removing  $\left( \frac{1}{3},\frac{2}{3} \right) $ from $[0,1]$ leaves the points
+     $p_0=\frac{1}{3}$ and $p_1=\frac{2}{3}$. In fact, since the Cantor set is the infinite intersection of each $G_n$,  $C$ contain the endpoints of each such subinterval,
+     and is clearly non-empty. In fact, it is infinite.
+\end{proof}
+
+\begin{theorem}
+    \ 
+    \begin{enumerate}
+        \item The Cantor set is a closed subset of $\mathds{R}$.
+        \item The Cantor set has Lebesgue measure $0$.
+        \item The Cantor contains no interval with more then one one element.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Each set $G_n$ used in the definition of cantor set is a union of open intervals. Thus  $G_n$ is open. Thus  $\bigcup_{n=1}^{\infty}G_n$ is open set,
+    and hence its complement is closed. The Cantor set equals $[0,1]\cap\left( \mathds{R}\setminus \bigcup_{n=1}^{\infty}G_n \right)$, which is the intersection of 
+    two closed sets. Thus the Cantor set is a closed, completing the proof of (1).
+
+    By induction on $n$, each  $G_n$ is the union of  $2^(n-1)$ disjoint open interval, each of which length  $\frac{1}{3^{n}}$. Thus $\smu(G_n)=\frac{2^{n-1}}{3^{n}}$.
+    The set $G_1,G_2,\ldots$ are disjoint. Hence,
+    \begin{align*}
+        \smu\left( \bigcup_{n=1}^{\infty}G_n \right) &= \frac{1}{3}+\frac{2}{9}+\frac{4}{27}+\ldots\\
+                                                     &= \frac{1}{3}\left( 1 +\frac{2}{3}+\frac{4}{9}+\ldots\right) \\
+                                                     &=\frac{1}{3}\cdot\frac{1}{1-\frac{2}{3}}\\
+                                                     &=1.
+    \end{align*}
+    Thus the Cantor set, which is equal to $[0,1]\setminus \bigcup_{n=1}^{\infty}G_n$, has Lebesgue measure $1-1$. In other word the Cantor has Lebesgue measure  $0$.
+    This proves (2).
+
+    A set with Lebesgue measure  $0$ cannot contain an interval that has more than one element. Thus  $(2)\implies(3)$.
+\end{proof}
+
+Now first element of Cantor set is $0$. If it countable then we can tell its second elements but we cann't and it contain infinitely many point. Hence it is uncountable.
+In fact $C$ contain as many element as  $\mathds{R}$. Although canto set is has measure $0$.
