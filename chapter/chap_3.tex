@@ -54,12 +54,13 @@ i.e. every simple function is a finite linear combination of characteristic func
 are measurable.
 
 It is of interest that every function can be approximated by simple function.
+\newpage
 \begin{theorem}[Approximation by simple function]
     $f:(X,\mathcal{A})\to\mathds{R}^{+}$ is a non-negative measurable function. Then there exists a sequence of simple function $\{\psi_n\}$ such that.
      \begin{enumerate}
          \item $\psi$ is monotone increasing.
          \item  $\lim\psi_n=f$.
-    \end{enumerate}
+     \end{enumerate}
 \end{theorem}
 \begin{proof}
     Let $k$ be any integer. We write,
@@ -150,7 +151,8 @@ It is of interest that every function can be approximated by simple function.
     
     By hypothesis, $\tau$ contains  $\{(a,\infty):a\in\mathds{R}\}$. Since $\tau$ is closed under complementation,  $\tau$ contains  $\{(-\infty,b]:b\in\mathds{R}\}$.
     $\tau$ also contain  $\{(a,b]:a,b\in\mathds{R}\}$, as $\tau$ is closed under countable intersection. Now  $(a,b)=\bigcup_{k=1}^{\infty}(a,b-\frac{1}{k}]$.
-    and $(-\infty,b)=\bigcup_{k=1}^{\infty}(-k,b-\frac{1}{k}]$. Hence, $\tau$ contain every open set of  $\mathds{R}$.
+    and $(-\infty,b)=\bigcup_{k=1}^{\infty}(-k,b-\frac{1}{k}]$. Hence, $\tau$ contain every open intervals of  $\mathds{R}$ , and every open set is union of 
+    countable number of open intervals. Then $\tau$ contain every open set in $\mathds{R}$.
 
     Thus the \sig-algebra $\tau$ contains the smallest  \sig-algebra on  $\mathds{R}$ that contains all open subset of $\mathds{R}$. Hence $\tau$ contains every borel set of  $\mathds{R}$. Thus $f$ is a measurable function.
 \end{proof}

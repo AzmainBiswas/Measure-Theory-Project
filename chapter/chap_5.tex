@@ -74,11 +74,11 @@ $\smu(A)\ge \smu(A\setminus E^{c})+\smu(A\setminus E)$ is enough.
     Now from \refeq{union is measurable} we say if  $E_1,E_2\in\mathcal{L}$ then  $E_1\cup E_2\in\mathcal{L}$. \\
     Now from previous $E_1^{c},E_2^{c}\in\mathcal{L}$. Then $(E^{c}\cup E^{c})\in\mathcal{L}$.\\
     Then, $(E_1\cap E_2)^{c}\in\mathcal{L}\implies(E_1\cap E_2)\in\mathcal{L}$.\\
-    Now using induction on \refeq{union is measurable} we get, $F_n=\cup_{i=1}^{n}E_k\in\mathcal{L}$ where each $E_i\in\mathcal{L}$.\\
+    Now using induction on \refeq{union is measurable} we get, $F_n=\cup_{k=1}^{n}E_k\in\mathcal{L}$ where each $E_k\in\mathcal{L}$.\\
     ( 
     if $\{E_n\}$ is sequence of sets in $\mathcal{L}$. Then we can construct another sequence of disjoint sets ${E'_n}$ in  $\mathcal{L}$.
-    Where $E'_1=E_1,\ E'_n=E_n\setminus \cup_{i=1}^{n-1}E_k$\\
-    and $\cup_{i=1}^{n}E_k=\cup_{i=1}^{n}E'_i$
+    Where $E'_1=E_1,\ E'_n=E_n\setminus \cup_{k=1}^{n-1}E_k$\\
+    and $\cup_{k=1}^{n}E_k=\cup_{k=1}^{n}E'_k$
     )\\
     Without lose of generality we choose $\{E_n\}$ is sequence of disjoint set.\\
     Now $F_n$ is measurable Then,
@@ -88,52 +88,52 @@ $\smu(A)\ge \smu(A\setminus E^{c})+\smu(A\setminus E)$ is enough.
     \end{equation}
     Let, for all $A$ and for some $n\in\mathds{Z}^{+}$ 
     \[
-        \smu(A\cap F_n)=\sum_{i=1}^{n}\smu(A\cap E_k).
+        \smu(A\cap F_n)=\sum_{k=1}^{n}\smu(A\cap E_k).
     \]
     Then, 
     \begin{align*}
         \smu(A\cap F_{n+1})&=\smu((A\cap F_{n+1})\cap F_n)+\smu((A\cap F_{n+1})\cap F_n^{c})\ (\because F_n\ \text{is measurable.})\\
                            &=\smu(A\cap F_n)+\smu(A\cap E_{n+1})\ (\because F_{n+1}\cap F_n^{c}=E_{n+1}).\\
-                           &=\sum_{i=1}^{n}\smu(A\cap E_k)+\smu(A\cap E_{n+1})\\
-                           &=\sum_{i=1}^{n+1}\smu(A\cap E_k).
+                           &=\sum_{k=1}^{n}\smu(A\cap E_k)+\smu(A\cap E_{n+1})\\
+                           &=\sum_{k=1}^{n+1}\smu(A\cap E_k).
     \end{align*}
     Hence the proposition is true for $n+1$. And it is true for  $n=1$.\\
     Hence for all $n$
     \begin{equation}
         \label{FnEn}
-        \smu(A\cap F_n)=\sum_{i=1}^{n}\smu(A\cap E_k).
+        \smu(A\cap F_n)=\sum_{k=1}^{n}\smu(A\cap E_k).
     \end{equation}
-    Let, $E=\cup_{i=1}^{n}E_k$. Then clearly $F_n\subset E$ for all $n$.\\
+    Let, $E=\cup_{k=1}^{n}E_k$. Then clearly $F_n\subset E$ for all $n$.\\
     Then, 
     \begin{align*}
         \smu(A\cap E)&\ge \smu(A\cap F_n) \ \text{ By monotone property}\\
-                     &=\sum_{i=1}^{n}\smu(A\cap E_k).
+                     &=\sum_{k=1}^{n}\smu(A\cap E_k).
     \end{align*}
     making  $n\to\infty$, We have,
     \begin{align*}
-        \smu(A\cap E)\ge \sum_{i=1}^{\infty}\smu(A\cap E_k).
+        \smu(A\cap E)\ge \sum_{k=1}^{\infty}\smu(A\cap E_k).
     \end{align*}
     by countable subadditivity, the converse inequality holds. Then,
     \begin{equation}
         \label{infty}
-        \smu(A\cap E)=\sum_{i=1}^{\infty}\smu(A\cap E_k)
+        \smu(A\cap E)=\sum_{k=1}^{\infty}\smu(A\cap E_k)
     \end{equation}
     From \refeq{Fn measurable} and \refeq{FnEn} we have.
     \begin{equation}
-        \smu(A)=\sum_{i=1}^{n}\smu(A\cap E_k)+\smu(A\cap F_n^{c})
+        \smu(A)=\sum_{k=1}^{n}\smu(A\cap E_k)+\smu(A\cap F_n^{c})
     \end{equation}
     now clearly $(A\cap F_n^{c})\supset (A\cap E^{c})\implies\smu(A\cap F_n^{c})\ge \smu(A\cap E^{c})$
     Then,
     \begin{equation}
         \label{EnE}
-        \smu(A)\ge \sum_{i=1}^{n}\smu(A\cap E_k)+\smu(A\cap E^{c})
+        \smu(A)\ge \sum_{k=1}^{n}\smu(A\cap E_k)+\smu(A\cap E^{c})
     \end{equation}
     Making $n\to\infty$ in \refeq{EnE} We get,
     \begin{align*}
-        \smu(A)&\ge \sum_{i=1}^{\infty}\smu(A\cap E_k)+\smu(A\cap E^{c})\\
+        \smu(A)&\ge \sum_{k=1}^{\infty}\smu(A\cap E_k)+\smu(A\cap E^{c})\\
                &\ge \smu(A\cap E)+\smu(A\cap E^{c}) \ (\text{By \refeq{infty}})
     \end{align*}
-    Hence $E=\cup_{i=1}^{\infty}E_k$ is measurable. In other word $\mathcal{L}$ is closed under countable union.\\
+    Hence $E=\cup_{k=1}^{\infty}E_k$ is measurable. In other word $\mathcal{L}$ is closed under countable union.\\
     Hence $\mathcal{L}$ is a \sig-algebra.
 \end{proof}
 Hence outer measure become measure (i.e. additive) when it is restricted on \sig-algebra.
@@ -160,26 +160,26 @@ Since Lebesgue Measure is a measure so it follows all the property of measure.
     \[
         \sum_{k=1}^{\infty}\ell(I_k)\le \smu(A)+\epsilon.
     \]
-    (Because, $\smu(A)=\inf\left\{ \sum_{k=1}^{\infty}I_k \right\}$ where, $A\subset\cup_{k=1}^{\infty}I_n$ )\\
+    (Because, $\smu(A)=\inf\left\{ \sum_{k=1}^{\infty}I_k \right\}$ where, $A\subset\cup_{k=1}^{\infty}I_k$ )\\
     Let, $I'_n=I_n\cap(a,\infty)$ and $I''_n=I_n\cap(-\infty,a)$.\\
     Then $I'_n$ and  $I''_n$ are interval(can be empty) and,
     \begin{align*}
         \ell(I_n)&=\ell(I'_n)+\ell(I''_n)\\
                  &=\smu(I'_n)+\smu(I''_n).
     \end{align*}
-    Since, $A_1\subset\bigcup_{i=1}^{\infty}I'_k$ we have,
+    Since, $A_1\subset\bigcup_{k=1}^{\infty}I'_k$ we have,
     \[
-        \smu(A_1)\le \smu\left( \bigcup_{i=1}^{\infty}I'_k \right) \le \sum_{i=1}^{\infty}\smu(I'_i).
+        \smu(A_1)\le \smu\left( \bigcup_{k=1}^{\infty}I'_k \right) \le \sum_{k=1}^{\infty}\smu(I'_k).
     \]
-    Since, $A_2\subset\bigcup_{i=1}^{\infty}I''_k$ we have,
+    Since, $A_2\subset\bigcup_{k=1}^{\infty}I''_k$ we have,
     \[
-        \smu(A_2)\le \smu\left( \bigcup_{i=1}^{\infty}I''_k \right) \le \sum_{i=1}^{\infty}\smu(I''_i).
+        \smu(A_2)\le \smu\left( \bigcup_{k=1}^{\infty}I''_k \right) \le \sum_{k=1}^{\infty}\smu(I''_k).
     \]
     Then,
     \begin{align*}
-        \smu(A_1)+\smu(A_2)&\le \sum_{i=1}^{\infty}\smu(I'_k)+\sum_{i=1}^{\infty}\smu(I''_i)\\
-                           &=\sum_{i=1}^{\infty}\left( \smu(I'_n)+\smu(I''_n) \right)\\
-                           &=\sum_{i=1}^{\infty}\ell(I_k)\\
+        \smu(A_1)+\smu(A_2)&\le \sum_{k=1}^{\infty}\smu(I'_k)+\sum_{k=1}^{\infty}\smu(I''_k)\\
+                           &=\sum_{k=1}^{\infty}\left( \smu(I'_k)+\smu(I''_k) \right)\\
+                           &=\sum_{k=1}^{\infty}\ell(I_k)\\
                            &\le \smu(A)+\epsilon.
     \end{align*}
     Since $\epsilon$ is a arbitrary positive real number so we have,
